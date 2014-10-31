@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+<html>
+<head>
+    <title>WELCOME</title>
+</head>
+<body>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form action="." method="post"> {% csrf_token %}
+    Email: {{ form.username }}{{ form.username.errors }}<br><br>
+    Password: {{ form.password }}{{ form.password.errors }}<br><br>
+    {{ error_message }}<br>
+    <input type="submit" value="Sign In" />
+</form>
+<br>
+<b><u>Social Login:</u></b><br>
+<a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook</a><br>
+<a href="{% provider_login_url "twitter" method="oauth2" %}">Twitter</a>
+<br><br>
+Not a user yet? <a href="/">Register here</a>
+</body>
+</html>

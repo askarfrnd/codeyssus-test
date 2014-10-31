@@ -1,0 +1,17 @@
+*.log
+*.pot
+*.pyc
+.idea\
+.idea/
+demo\.idea\
+demo/.idea/
+demo/*/migrations/
+demo\*\migrations\
+demo/*/migrations/*
+demo\*\migrations\*
+demo\uploads\
+demo/uploads/
+local_settings.py
+logs/*/*
+demo/templates/layouts/*/images/
+demo\templates\layouts\*\images\
