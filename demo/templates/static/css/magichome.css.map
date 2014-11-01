@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAQA,eAAe;EACb,gBAAgB,EAAC,OAAO;EACxB,UAAU,EAAC,KAAK;EAEf,uBAAE;IACA,KAAK,EAbI,GAAG;EAed,sBAAC;IACC,UAAU,EAAE,OAAO",
+"sources": ["magichome.scss"],
+"names": [],
+"file": "magichome.css"
+}

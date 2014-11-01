@@ -1,0 +1,9 @@
+.c-wrapper-home {
+  background-color: #cccccc;
+  min-height: 500px; }
+  .c-wrapper-home .hey h2 {
+    color: red; }
+  .c-wrapper-home .hey p {
+    text-align: justify; }
+
+/*# sourceMappingURL=magichome.css.map */
