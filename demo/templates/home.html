@@ -16,12 +16,6 @@
                     <h4>Powerful collaboration, code review, and code management for open source and private projects. Need private repositories.</h4>
                 </div>
                 <div class="col-md-4 col-xs-offset-1">
-
-
-
-
-
-
                 	<form action="" method="post"  id="top-space1"> {% csrf_token %}
   						<div class="form-group">
                             {{ form.name|htmlattributes:"class:form-control textbox1,placeholder:Name" }}{{ form.name.errors }}
@@ -42,12 +36,12 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <div class="form-group">
-                                     <button type="button" class="btn btn-primary btn-lg btn-block fb-button" id="btn1"><center><a href="{% provider_login_url "facebook" method="oauth2" %}"><img class="img-responsive" src="{{STATIC_URL }}img/fb.png"></a> </center></button>
+                                  <a  class="btn btn-primary btn-lg btn-block btn-social fb-button "  href="{% provider_login_url "facebook" method="oauth2" %}"> <center><img class="img-responsive" src="{{STATIC_URL }}img/fb.png"></center></a>
                                 </div>
                             </div>
                             <div class="col-xs-6">
                                 <div class="form-group">
-                                     <button type="button" class="btn btn-primary btn-lg btn-block twitter-button" id="btn1" ><center><a href="{% provider_login_url "twitter" method="oauth2" %}"><img class="img-responsive" src="{{STATIC_URL }}img/twitter1.png"></a> </center></button>
+                                   <a href="{% provider_login_url "twitter" method="oauth2" %}" class="btn btn-primary btn-lg btn-block btn-social twitter-button" > <center><img class="img-responsive" src="{{STATIC_URL }}img/twitter1.png"> </center></a>
                                  </div>
                              </div>
                         </div>
@@ -120,17 +114,17 @@
             <h4 class="modal-title" id="myModalLabel">Log in</h4>
         </div>
       <div class="modal-body" id="c-model-body">
-          <form  action="" method="post"> {% csrf_token %}
+          <form  action="/login" method="post"> {% csrf_token %}
                               <div class="form-group">
-{#                                 {{ form.username|htmlattributes:"class:form-control textbox1,placeholder:Username" }}{{ form.username.errors }}#}
-                                <input type="text" class="form-control textbox1" placeholder="Email">
+                                 {{ login_form.username|htmlattributes:"class:form-control textbox1,placeholder:email" }}{{ login_form.username.errors }}
+{#                                <input type="text" class="form-control textbox1" placeholder="Email">#}
                               </div>
 
                               <div class="form-group">
-                                  {{ form.password|htmlattributes:"class:form-control textbox1,placeholder:Password" }}{{ form.password.errors }}
+                                  {{ login_form.password|htmlattributes:"class:form-control textbox1,placeholder:Password" }}{{ login_form.password.errors }}
                              </div>
                              <div class="form-group">
-                                 <button type="button" class="btn btn-primary btn-lg btn-block" id="btn2" value="Sign In">Sign in</button>
+                                 <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn2" value="Sign In">Sign in</button>
                              </div>
 
           </form>

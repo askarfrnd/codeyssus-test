@@ -1,24 +1,102 @@
 {% extends "common_elements/base_skeleton.html" %}
+{% load user_profiles_filters %}
+{% load socialaccount %}
 {% load url from future %}
-
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block extra_css %}
+    <style>
+        .errorlist li
+        {
+            color:#5B5959!important;
+        }
+    </style>
+{% endblock %}
+{% block extra_js %}{% endblock %}
+
 
 {% block page_content %}
-    <h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
-{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+<div class="c-wrapper-signup">
+    <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <center>
+                        <h1>{% trans "Sign Up" %}</h1>
+                        <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+    {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
+                    </center>
+                    <div class="col-md-4 col-xs-offset-4">
+                        <center>
+                          <form action="" method="post" id="top-space1">{% csrf_token %}
+                             <div class="form-group">
+                                {{ form.username|htmlattributes:"class:form-control textbox1,placeholder:Username" }}{{ form.username.errors }}
+    {#                            <input type="text" class="form-control textbox1" placeholder="Username">#}
+                             </div>
+                             <div class="form-group">
+                                 {{ form.email|htmlattributes:"class:form-control textbox1, placeholder:Email" }}{{ form.email.errors }}
+    {#                            <input type="text" class="form-control textbox1" placeholder="Your email">#}
+                             </div>
+                             <div class="form-group">
+                                 {% if redirect_field_value %}
+                                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                 {% endif %}
+                             </div>
+                             <div class="form-group">
+                                 <button type="submit" value="Sign In"  class="btn btn-primary btn-lg btn-block" id="btn1" >{% trans "Sign Up" %}</button>
+                             </div>
+                          </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
 
 {% endblock %}
+{#  						 <div class="form-group">#}
+{#                            {{ form.username|htmlattributes:"class:form-control textbox1,placeholder:Username" }}{{ form.username.errors }}#}
+{#                            <input type="text" class="form-control textbox1" placeholder="Username">#}
+{#                         </div>#}
+{#                         <div class="form-group">#}
+{#                             {{ form.email|htmlattributes:"class:form-control textbox1, placeholder:Email" }}{{ form.email.errors }}#}
+{#                            <input type="text" class="form-control textbox1" placeholder="Your email">#}
+{#                         </div>#}
+{#                         <div class="form-group">#}
+{#                             {% if redirect_field_value %}#}
+{#                              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+{#                             {% endif %}#}
+{#                         </div>#}
+{#                         <div class="form-group">#}
+{#                             <button type="submit" value="Sign In"  class="btn btn-primary btn-lg btn-block" id="btn1" >{% trans "Sign Up" %}</button>#}
+{#                         </div>#}
+{##}
+{#                     </form>#}
+
+
+
+
+
+
+{#    <h1>{% trans "Sign Up" %}</h1>#}
+{##}
+{#<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to#}
+{#{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>#}
+{##}
+{#<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">#}
+{#  {% csrf_token %}#}
+{#    {{ form.username }}{{ form.username.errors }}#}
+{#    {{ form.email }}{{ form.email.errors }}#}
+{##}
+{#  {% if redirect_field_value %}#}
+{#  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+{#  {% endif %}#}
+{##}
+{#  <button type="submit">{% trans "Sign Up" %} &raquo;</button>#}
+{#</form>#}
+
+
+
+

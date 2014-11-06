@@ -1,30 +1,83 @@
-<!DOCTYPE html>
+{% extends "common_elements/base_skeleton.html" %}
+{% load user_profiles_filters %}
 {% load socialaccount %}
-<html>
-<head>
-    <title>WELCOME</title>
-</head>
-<body>
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    {{ message }}
-    {% endfor %}
-</ul>
-{% endif %}
+{% block page_title %}Login{% endblock %}
+{% block extra_css %}
+    <style>
+        .errorlist li
+        {
+            color:#5B5959!important;
+        }
+    </style>
+{% endblock %}
+{% block extra_js %}{% endblock %}
 
-<form action="" method="post"> {% csrf_token %}
-    Email: {{ form.username }}{{ form.username.errors }}<br><br>
-    Password: {{ form.password }}{{ form.password.errors }}<br><br>
-    {{ error_message }}<br>
-    <input type="submit" value="Sign In" />
-</form>
-<br>
-<b><u>Social Login:</u></b><br>
-<a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook</a><br>
-<a href="{% provider_login_url "twitter" method="oauth2" %}">Twitter</a>
-<br><br>
-Not a user yet? <a href="/">Register here</a>
-</body>
-</html>
+
+
+{% block page_content %}
+<div class="c-wrapper-login">
+<div class="banner">
+    	<div class="container">
+        	<div class="row">
+                <center>
+                    <h1>Login</h1>
+                </center>
+            	<div class="col-md-4 col-xs-offset-4">
+                	<center><form action="" method="post"  id="top-space1">{% csrf_token %}
+  						<div class="form-group">
+                            {{ form.username|htmlattributes:"class:form-control textbox1,placeholder:Email" }}{{ form.username.errors }}
+{#                            <input type="text" class="form-control textbox1" placeholder="Username">#}
+                         </div>
+                         <div class="form-group">
+                             {{ form.password|htmlattributes:"class:form-control textbox1, placeholder:Password" }}{{ form.password.errors }}
+{#                            <input type="text" class="form-control textbox1" placeholder="Your email">#}
+                         </div>
+
+                         <div class="form-group">
+                             <button type="submit" value="Sign In"  class="btn btn-primary btn-lg btn-block" id="btn1" >Sign in</button>
+                         </div>
+                        <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                       <a  class="btn btn-primary btn-lg btn-block btn-social fb-button " href="{% provider_login_url "facebook" method="oauth2" %}" > <center><img class="img-responsive" src="{{STATIC_URL }}img/fb.png"></center></a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                       <a  class="btn btn-primary btn-lg btn-block btn-social twitter-button" href="{% provider_login_url "twitter" method="oauth2" %}"> <center><img class="img-responsive" src="{{STATIC_URL }}img/twitter1.png"> </center></a>
+                                     </div>
+                                </div>
+                        </div>
+                     </form> </center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{#                {% if messages %}#}
+{#                <ul class="messages">#}
+{#                    {% for message in messages %}#}
+{#                    {{ message }}#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#                {% endif %}#}
+{#                #}
+{#                <form action="" method="post"> {% csrf_token %}#}
+{#                    Email: {{ form.username }}{{ form.username.errors }}<br><br>#}
+{#                    Password: {{ form.password }}{{ form.password.errors }}<br><br>#}
+{#                    {{ error_message }}<br>#}
+{#                    <input type="submit" value="Sign In" />#}
+{#                </form>#}
+{#                <br>#}
+                {#<b><u>Social Login:</u></b><br>#}
+                {#<a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook</a><br>#}
+                {#<a href="{% provider_login_url "twitter" method="oauth2" %}">Twitter</a>#}
+                {#<br><br>#}
+{#                Not a user yet? <a href="/">Register here</a>#}
+{#                </div>#}
+{% endblock %}

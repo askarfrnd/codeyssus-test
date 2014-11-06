@@ -98,15 +98,37 @@ body
 	text-align:center;
 	height:50px;
 	transition:all 0.2s;
-	
+
 }
 #btn1:hover
 {
-	
+
 	background-color:#FFF;
 	color:#adea35
-	
-	
+
+
+}
+.btn-social
+{
+	border-radius:3px;
+	background-color:#adea35;
+	color:#FFF;
+	text-transform:uppercase;
+	border-color:transparent;
+	text-align:center;
+	height:50px;
+	transition:all 0.2s;
+
+
+}
+.btn-social:hover,
+.btn-social:focus,.btn-social:active
+{
+
+	background-color:#FFF;
+	color:#adea35
+    border-color:none!important;
+
 }
 #btn2
 {
@@ -123,20 +145,20 @@ body
 #btn2:hover
 {
 
-    background-color:#BCFF3A;
+    background-color:#90d012;
 	color:#FFFFFF;
 }
 #c-model-header1
 {
     text-align: center;
-    background-color:#f74343;
+    /*background-color:#c62a2a;*/
     font-family: 'Montserrat', sans-serif;
 	font-size:14px;
 	font-weight:900;
-    color:#FFFFFF;
+    color:#cccccc;
     text-transform: uppercase;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 #c-model-body
 {
@@ -148,7 +170,6 @@ body
 {
 	border-radius:3px;
 	color:#999;
-	text-transform:uppercase;
 	height:50px;
 	font-size:10px;
 }
@@ -167,6 +188,7 @@ body
 }
 .fb-button img
 {
+    padding-top:4px ;
 
 }
 .fb-button:hover
@@ -182,11 +204,12 @@ body
 }
 .twitter-button img
 {
-
+     padding-top:4px ;
 }
 .twitter-button:hover
 {
     background-color:#529bd2!important;
+    border-color: transparent!important;
 }
 
 
@@ -315,10 +338,88 @@ body
 }
 .footer a:hover
 {
-	padding-top:10px;	
 	text-decoration:none;
 	color:#adea35;
 	display:block;
 }
+.errorlist
+{
+    display: table;
+    padding: 0px;
+    margin: 0px 0px 5px;
 
-	
+}
+.errorlist li
+{
+    color: #FFFFFF;
+    float: left;
+    list-style: none;
+    padding-top: 5px;
+}
+
+::-webkit-input-placeholder {
+    text-transform: uppercase;
+    color: #CCC!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    text-transform: uppercase;
+    color: #CCC!important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-transform: uppercase;
+    color: #CCC!important;
+}
+
+:-ms-input-placeholder {
+    text-transform: uppercase;
+    color: #CCC!important;
+}
+
+.c-wrapper-login .banner
+{
+    background-color:#FFFFFF;
+    background-image: none;
+    margin-bottom: 50px;
+}
+.c-wrapper-login h1
+{
+    color: #5B5959;
+}
+.c-wrapper-login #btn1:hover
+{
+    background-color: #90d012;
+    color: #FFFFFF;
+}
+
+.c-wrapper-signup .banner
+{
+    background-color:#FFFFFF;
+    background-image: none;
+    margin-bottom: 50px;
+}
+.c-wrapper-signup h1
+{
+    color: #5B5959;
+}
+.c-wrapper-signup p
+{
+    color: #5B5959;
+    text-align: center;
+    width:400px;
+    padding-top: 10px;
+}
+.c-wrapper-signup .footer p
+{
+    color: #FFFFFF;
+}
+.c-wrapper-signup h1
+{
+    color: #5B5959;
+}
+.c-wrapper-signup #btn1:hover
+{
+    background-color: #90d012;
+    color: #FFFFFF;
+}

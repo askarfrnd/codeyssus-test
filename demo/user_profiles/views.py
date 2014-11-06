@@ -14,8 +14,13 @@ from .models import UserProfile
 
 def home(request):
     temp_dict = {}
-    form = UserRegistrationForm()
-
+    reg_form = UserRegistrationForm()
+    login_form = AuthenticationForm()
+    if request.user.is_authenticated():
+        if request.user.is_staff:
+            return HttpResponseRedirect('/admin')
+        else:
+            return HttpResponseRedirect('/dashboard')
     if request.POST:
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -28,8 +33,14 @@ def home(request):
 
             User.objects.filter(~Q(id=user_obj.id) & Q(email=user_obj.email)).delete()
             messages.success(request, "Thank you for registering. You may now login.")
-            return HttpResponseRedirect('/')
-    temp_dict['form'] = form
+            user_login = authenticate(username=request.POST['email'], password=request.POST['password'])
+            if user_login:
+                login(request, user_login)
+                return HttpResponseRedirect('/dashboard/')
+            else:
+                temp_dict['error_message'] = "Invalid Credentials."
+    temp_dict['form'] = reg_form
+    temp_dict['login_form'] = login_form
     return render_to_response(
         'home.html',
         temp_dict, context_instance=RequestContext(request))
