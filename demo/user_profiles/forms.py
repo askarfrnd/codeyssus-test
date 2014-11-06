@@ -37,3 +37,9 @@ class UserProfileCompleteForm(forms.ModelForm):
         exclude = ('user', 'registration_type', 'is_email_verified')
 
 
+class ContentUploadForm(forms.Form):
+    file = forms.FileField(required=True)
+
+
+class CaptionForm(forms.Form):
+    caption = forms.CharField(max_length=100)

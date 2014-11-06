@@ -8,8 +8,8 @@ from django.contrib import messages
 from django.db.models import Q
 
 from .utils import create_random_string
-from .forms import AuthenticationForm, UserRegistrationForm, UserProfileCompleteForm
-from .models import UserProfile
+from .forms import AuthenticationForm, UserRegistrationForm, ContentUploadForm, CaptionForm
+from .models import UserProfile, Photo, Audio, Video
 
 
 def home(request):
@@ -92,8 +92,40 @@ def dashboard(request):
         temp_dict, context_instance=RequestContext(request))
 
 
+@login_required()
 def user_profile(request):
+    user_profile = request.user.user_profile
     temp_dict = {}
+    print user_profile.caption
+    caption_form = CaptionForm(initial={'caption': user_profile.caption})
+    form = ContentUploadForm()
+    temp_dict['photos'] = Photo.objects.filter(user_profile=user_profile)
+    temp_dict['audios'] = Audio.objects.filter(user_profile=user_profile)
+    temp_dict['videos'] = Video.objects.filter(user_profile=user_profile)
+    if request.POST:
+        if request.FILES:
+            print request.POST, request.FILES
+            form = ContentUploadForm(request.POST, request.FILES)
+            if 'photo_submit' in request.POST:
+                photo_obj = Photo()
+                photo_obj.user_profile = user_profile
+                photo_obj.file_path = request.FILES['file']
+                photo_obj.save()
+            if 'audio_submit' in request.POST:
+                audio_obj = Audio()
+                audio_obj.user_profile = user_profile
+                audio_obj.file_path = request.FILES['file']
+                audio_obj.save()
+            if 'video_submit' in request.POST:
+                video_obj = Video()
+                video_obj.user_profile = user_profile
+                video_obj.file_path = request.FILES['file']
+                video_obj.save()
+        else:
+            user_profile.caption = request.POST['caption']
+            user_profile.save()
+    temp_dict['form'] = form
+    temp_dict['caption_form'] = caption_form
     return render_to_response(
         'profile.html',
         temp_dict, context_instance=RequestContext(request))
