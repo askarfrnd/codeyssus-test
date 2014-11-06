@@ -10,6 +10,13 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '<username>'
+EMAIL_HOST_PASSWORD = '<password>'
+REPLY_TO_EMAIL = "admin@demoproject.com"
+
 LOGIN_URL = '/'
 
 MANAGERS = ADMINS
@@ -131,6 +138,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.twitter',
 
     'user_profiles',
+    'verification',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (

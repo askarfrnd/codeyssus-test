@@ -36,7 +36,7 @@ def home(request):
             user_login = authenticate(username=request.POST['email'], password=request.POST['password'])
             if user_login:
                 login(request, user_login)
-                return HttpResponseRedirect('/dashboard/')
+                return HttpResponseRedirect('/email/verify/')
             else:
                 temp_dict['error_message'] = "Invalid Credentials."
     temp_dict['form'] = reg_form
@@ -89,6 +89,13 @@ def dashboard(request):
     temp_dict['user_profile'] = user_profile
     return render_to_response(
         'dashboard.html',
+        temp_dict, context_instance=RequestContext(request))
+
+
+def user_profile(request):
+    temp_dict = {}
+    return render_to_response(
+        'profile.html',
         temp_dict, context_instance=RequestContext(request))
 
 

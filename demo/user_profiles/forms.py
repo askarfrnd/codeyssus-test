@@ -21,7 +21,7 @@ class UserRegistrationForm(forms.ModelForm):
     def clean_email(self):
         user = None
         cleaned_data = super(UserRegistrationForm, self).clean()
-        email = cleaned_data.get('email')
+        email = cleaned_data.get('email').lower()
         try:
             user = User.objects.get(email=email)
         except:
