@@ -33,7 +33,7 @@
                              {{ form.password|htmlattributes:"class:form-control textbox1, placeholder:Password" }}{{ form.password.errors }}
 {#                            <input type="text" class="form-control textbox1" placeholder="Your email">#}
                          </div>
-
+                         {{ error_message }}
                          <div class="form-group">
                              <button type="submit" value="Sign In"  class="btn btn-primary btn-lg btn-block" id="btn1" >Sign in</button>
                          </div>

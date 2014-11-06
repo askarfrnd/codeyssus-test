@@ -22,9 +22,9 @@ def home(request):
         else:
             return HttpResponseRedirect('/dashboard')
     if request.POST:
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user_profile_obj = form.save(commit=False)
+        reg_form = UserRegistrationForm(request.POST)
+        if reg_form.is_valid():
+            user_profile_obj = reg_form.save(commit=False)
             user_obj = User.objects.create_user(username=create_random_string(),
                                                 email=request.POST['email'], password=request.POST['password'])
             user_profile_obj.user = user_obj
