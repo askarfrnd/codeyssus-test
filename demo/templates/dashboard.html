@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DASHBOARD</title>
-</head>
-<body>
-Hi {{ user_profile.name }}
-<a href="/profile">View Profile</a>
-<a href="/logout">Logout</a>
-</body>
-</html>
+{% extends "common_elements/base_skeleton.html" %}
+{% load user_profiles_filters %}
+{% load socialaccount %}
+
+{% block page_title %}DASHBOARD{% endblock %}
+{% block extra_css %}
+
+{% endblock %}
+
+{% block extra_js %}{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+         <div class="c-wrapper-dashboard">
+
+           <div class="row">
+               <div class="col-md-3">
+                  <h3>Welcome {{ user_profile.name }}</h3>
+               </div>
+           </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+{#<html>#}
+{#<head>#}
+{#    <title>DASHBOARD</title>#}
+{#</head>#}
+{#<body>#}
+{#Hi {{ user_profile.name }}#}
+{#<a href="/profile">View Profile</a>#}
+{#<a href="/logout">Logout</a>#}
+{#</body>#}
+{#</html>#}

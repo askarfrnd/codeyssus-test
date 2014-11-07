@@ -18,7 +18,19 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Portfolio</a></li> 
         <li><a href="#">Contact</a></li>
+          {% if request.user.is_authenticated %}
+              <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Hi {{ user_profile.name }}<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" id="no-top-padding-menu-bar">
+              <li><a href="/profile">View Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="/logout">Logout</a></li>
+             </ul>
+          </li>
+          {% else %}
         <li><button  class="btn" id="btn-menu" href="..login.html">Sign in</button></li>
+          {% endif %}
+
       </ul>
      </div>
     </div>

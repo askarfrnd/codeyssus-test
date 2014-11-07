@@ -1,61 +1,108 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ request.user.user_profile.name }} - Profile</title>
-</head>
-<body>
-<a href="/">Home</a>
-<br><br>
-<b>Caption</b>
-<form action="" method="post">{% csrf_token %}
-{{ caption_form.caption }}
-<input type="submit" id="caption_submit" name="caption_submit" value="Save">
-</form>
+{% extends "common_elements/base_skeleton.html" %}
+{% load user_profiles_filters %}
+{% load socialaccount %}
 
-<br><br>
-Photos:
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-{{ form.file }}
-<input type="submit" id="photo_submit" name="photo_submit" value="Upload">
-</form>
+{% block page_title %}{{ request.user.user_profile.name }} - Profile{% endblock %}
+{% block extra_css %}
 
-{% for photo in photos %}
-<img src="{{ MEDIA_URL }}/{{ photo.file_path }}" alt="Photo" height="80" width="100">
-<br>
-{% endfor %}
+{% endblock %}
 
-<br><br>
-Audios:
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-{{ form.file }}
-<input type="submit" id="audio_submit" name="audio_submit" value="Upload">
-</form>
+{% block extra_js %}{% endblock %}
 
-{% for audio in audios %}
-    <audio controls>
-      <source src="{{ MEDIA_URL }}/{{ audio.file_path }}" type="audio/ogg">
-      <source src="{{ MEDIA_URL }}/{{ audio.file_path }}" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
+{% block page_content %}
+    <div class="container">
+         <div class="c-wrapper-profile">
 
-<br>
-{% endfor %}
+           <div class="row">
+               <div class="col-md-3">
+                  <h3>Welcome {{ user_profile.name }}</h3>
+                    <form action="" method="post" >{% csrf_token %}
+                        {{ caption_form.caption|htmlattributes:"class:form-control, placeholder:Caption, id:c-search" }}
+                        <button type="submit" class="btn btn-default" name="video_submit" id="video_submit">Save</button>
+                    </form>
+                  {{ user_profile.caption }}
+               </div>
+           </div>
 
-<br><br>
-Videos:
-<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-{{ form.file }}
-<input type="submit" id="video_submit" name="video_submit" value="Upload">
-</form>
+           <div class="row content-dashboard">
+               <div class="col-md-4">
+                   <h4>Images</h4><br>
+                       <form role="form" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                            <div class="form-group">
+{#                                <input type="file" id="exampleInputFile">#}
+                                {{ form.file }}{{ form.file.errors }}
+                                 <p class="help-block">Image format type can be of .jpg/jpeg/png</p>
+                            </div>
+                             <div class="form-group">
+                                <button type="submit" class="btn btn-default" name="photo_submit" id="photo_submit">Upload</button>
+                            </div>
+                       </form>
+               </div>
+               <div class="col-md-4">
+                   <h4>Videos</h4><br>
+                       <form role="form" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                            <div class="form-group">
+                                {{ form.file }}{{ form.file.errors }}
+{#                                <input type="file" id="exampleInputFile">#}
+                                 <p class="help-block">Video format can be of .mp4/mvi/avi</p>
+                            </div>
+                             <div class="form-group">
+                                <button type="submit" class="btn btn-default" name="video_submit" id="video_submit">Upload</button>
+                            </div>
+                       </form>
+               </div>
+               <div class="col-md-4">
+                   <h4>Audio</h4><br>
+                       <form role="form" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                            <div class="form-group">
+                                {{ form.file }}{{ form.file.errors }}
+{#                                <input type="file" id="exampleInputFile">#}
+                                 <p class="help-block">Audio format can be of .mp3/wav/wma</p>
+                             </div>
+                             <div class="form-group">
+                                <button type="submit" class="btn btn-default" name="audio_submit" id="audio_submit">Upload</button>
+                            </div>
+                       </form>
+               </div>
+           </div>
 
-{% for video in videos %}
-    <video width="320" height="240" controls>
-      <source src="{{ MEDIA_URL }}/{{ video.file_path }}" type="video/mp4">
-      <source src="movie.ogg" type="video/ogg">
-    Your browser does not support the video tag.
-    </video>
-<br>
-{% endfor %}
 
-</body>
-</html>
+           <div class="row content-dashboard" id="no-border-dashboard">
+               <div class="col-md-4">
+                   <h4>Images</h4><br>
+                   {% for photo in photos %}
+                   <img src="{{ MEDIA_URL }}/{{ photo.file_path }}" alt="photo" class="c-thumbnail">
+                   {% endfor %}
+
+               </div>
+               <div class="col-md-4">
+                   <h4>Videos</h4><br>
+                   {% for video in videos %}
+                       <video class="c-thumbnail" controls>
+                          <source src="{{ MEDIA_URL }}/{{ video.file_path }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                   {% endfor %}
+
+               </div>
+               <div class="col-md-4">
+                   <h4>Audio</h4><br>
+                   {% for audio in audios %}
+                       <audio controls>
+                          <source src="{{ MEDIA_URL }}/{{ audio.file_path }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                        </audio>
+                   {% endfor %}
+
+
+               </div>
+           </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

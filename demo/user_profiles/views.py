@@ -97,7 +97,7 @@ def user_profile(request):
     user_profile = request.user.user_profile
     temp_dict = {}
     print user_profile.caption
-    caption_form = CaptionForm(initial={'caption': user_profile.caption})
+    caption_form = CaptionForm()
     form = ContentUploadForm()
     temp_dict['photos'] = Photo.objects.filter(user_profile=user_profile)
     temp_dict['audios'] = Audio.objects.filter(user_profile=user_profile)
@@ -126,6 +126,7 @@ def user_profile(request):
             user_profile.save()
     temp_dict['form'] = form
     temp_dict['caption_form'] = caption_form
+    temp_dict['user_profile'] = user_profile
     return render_to_response(
         'profile.html',
         temp_dict, context_instance=RequestContext(request))

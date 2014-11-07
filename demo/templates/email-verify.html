@@ -1,15 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Email Verification</title>
-</head>
-<body>
-<b>Verify your email address.</b>
-<br><br>
-We now need to verify your email address. We've sent an email to {{ request.user.email }} to verify your address. Please click the link in that email to continue.
-<br><br>
-Need to <a href="/resend-email/">resend email</a> ?
-<br><br>
-<a href="/">Skip for now.</a>
-</body>
-</html>
+{% extends "common_elements/base_skeleton.html" %}
+{% load user_profiles_filters %}
+{% load socialaccount %}
+
+{% block page_title %}Email Verification{% endblock %}
+{% block extra_css %}
+    <style>
+
+        .c-wrapper-email-verify
+        {
+            padding-bottom: 110px;
+        }
+        .c-wrapper-email-verify .banner
+        {
+        background-color:#FFFFFF;
+        background-image: none;
+        }
+        .banner h1
+        {
+            color: #5B5959;
+            font-size: 24px;;
+        }
+        .banner p
+        {
+          color: #5B5959;
+            width: 300px;
+            text-align: center;
+        }
+        a
+        {
+            text-decoration:none;
+	        color:#f74343;
+            font-weight: bold;
+            transitions: all 0.3s;
+
+        }
+        a:hover
+        {
+            color:#f74343;
+        }
+
+    </style>
+{% endblock %}
+{% block extra_js %}{% endblock %}
+
+
+
+{% block page_content %}
+ <div class="container">
+        <div class="c-wrapper-email-verify">
+            <div class="banner">
+                 <center>
+                        <h1>Verify your email address</h1>
+                     <p>We now need to verify your email address. We've sent an email to {{ request.user.email }} to verify your address. Please click the link in that email to continue.</p>
+                     <br>
+                     <p>Need to <a href="/resend-email/">resend email</a> ?</p>
+                     <p><a href="/">Skip for now.</a></p>
+                 </center>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{##}
+{#<b>Verify your email address.</b>#}
+{#<br><br>#}
+{#We now need to verify your email address. We've sent an email to {{ request.user.email }} to verify your address. Please click the link in that email to continue.#}
+{#<br><br>#}
+{#Need to <a href="/resend-email/">resend email</a> ?#}
+{#<br><br>#}
+{#<a href="/">Skip for now.</a>#}
+{#</body>#}
+{#</html>#}

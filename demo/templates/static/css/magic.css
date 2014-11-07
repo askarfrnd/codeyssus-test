@@ -34,6 +34,13 @@ body
 	color:#000;
 	background-color:transparent;
 }
+
+#no-top-padding-menu-bar
+{
+    padding-top:10px!important;
+    font-size: 12px;
+
+}
 #btn-menu
 {
 	border-color:#f74343;
@@ -422,4 +429,80 @@ body
 {
     background-color: #90d012;
     color: #FFFFFF;
+}
+#c-search
+{
+    border-radius: 0px;
+}
+.content-dashboard
+{
+    padding-top: 75px;
+    padding-bottom: 30px;
+    border-bottom-color:  #eeeeee;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+
+}
+.content-dashboard p
+ {
+    font-size: 8px;
+ }
+.content-dashboard button
+{
+    	color:#f74343;
+        border-color: #f74343;
+        border-radius: 0px;
+        transition: all 0.3s;
+}
+.content-dashboard button:hover
+{
+
+  background-color: #90d012;
+  border-color: #90d012;
+  color: #FFFFFF;
+
+}
+.content-dashboard h4
+{
+    text-transform: uppercase;
+    font-size: bold;
+    color: #5B5959;
+}
+#no-border-dashboard
+{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    border-bottom-color: transparent;
+
+}
+.c-thumbnail
+{
+    height: 150px;
+    width: 200px;
+    margin-top: 30px;
+    background-color:#f74343 ;
+}
+.c-wrapper-dashboard
+{
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 245px;
+}
+.c-wrapper-dashboard h3
+{
+    color: #5B5959;
+    text-transform: uppercase;
+}
+.c-wrapper-profile
+{
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+}
+.c-wrapper-profile h3
+{
+    color: #5B5959;
+    text-transform: uppercase;
 }
